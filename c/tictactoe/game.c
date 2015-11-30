@@ -51,85 +51,52 @@ int main(){
 }
 void printWinner(int winRow, short b[3][3]){
 
-    if(winRow < 3){
-        int x, y;
-        printf("  1 2 3\n");
-        printf(" -------\n");
-        for(y = 0; y < 3; y++){
-            printf("%d|", y + 1);
-            for(x = 0; x < 3; x++){
+
+    int x, y;
+    printf("  1 2 3\n");
+    printf(" -------\n");
+    for(y = 0; y < 3; y++){
+        printf("%d|", y + 1);
+        for(x = 0; x < 3; x++){
+            if(winRow < 3){
                 if(y == winRow){
                     printf(KGRN "%c", getChar(b[y][x]));
                     printf(RESET "|");
                 }else{
                     printf("%c|", getChar(b[y][x]));
                 }
-             }
-            printf("\n -------\n");
-        }   
-    }
-
-    if(winRow >= 3 && winRow < 6){
-        int x, y;
-        printf("  1 2 3\n");
-        printf(" -------\n");
-        for(y = 0; y < 3; y++){
-            printf("%d|", y + 1);
-            for(x = 0; x < 3; x++){
+            }
+            if(winRow >=3 && winRow < 6){
                 if(3 -x == winRow){
                     printf(KGRN "%c", getChar(b[y][x]));
                     printf(RESET "|");
                 }else{
                     printf("%c|", getChar(b[y][x]));
                 }
-             }
-            printf("\n -------\n");
-        }
-    }
-
-    if(winRow == 6){
-        int x, y;
-        printf("  1 2 3\n");
-        printf(" -------\n");
-        for(y = 0; y < 3; y++){
-            printf("%d|", y + 1);
-            for(x = 0; x < 3; x++){
+            }
+            if(winRow == 6){
                 if((x == 0 && y == 0) || (x == 1 && y == 1) || (x == 2 && y == 2)){
                     printf(KGRN "%c", getChar(b[y][x]));
                     printf(RESET "|");
                 }else{
                     printf("%c|", getChar(b[y][x]));
-                }   
-             }
-            printf("\n -------\n");
-        }
-
-    }
-
-    if(winRow == 7){
-        int x, y;
-        printf("  1 2 3\n");
-        printf(" -------\n");
-        for(y = 0; y < 3; y++){
-            printf("%d|", y + 1);
-            for(x = 0; x < 3; x++){
+                }
+            }
+            if(winRow == 7){
                 if((x == 2 && y == 0) || (x == 1 && y == 1) || (x == 0 && y == 2)){
                     printf(KGRN "%c", getChar(b[y][x]));
                     printf(RESET "|");
                 }else{
                     printf("%c|", getChar(b[y][x]));
                 }
-             }
-            printf("\n -------\n");
-        }
-
-    }
-
-
+            }
+        }       
+        printf("\n -------\n");
+    } 
 }
                                 //Returns number based on position of winning 3 in a row
 int checkWinRow(short b[3][3]){ // 63457
-                                // 0xxx
+                               // 0xxx
     int x, y;                   // 1xxx
                                 // 2xxx
     for(y = 0; y < 3; y++){     
