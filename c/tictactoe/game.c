@@ -67,7 +67,7 @@ void printWinner(int winRow, short b[3][3]){
                 }
             }
             if(winRow >=3 && winRow < 6){
-                if(3 -x == winRow){
+                if(3 + x == winRow){
                     printf(KGRN "%c", getChar(b[y][x]));
                     printf(RESET "|");
                 }else{
@@ -96,7 +96,7 @@ void printWinner(int winRow, short b[3][3]){
 }
                                 //Returns number based on position of winning 3 in a row
 int checkWinRow(short b[3][3]){ // 63457
-                               // 0xxx
+                                // 0xxx
     int x, y;                   // 1xxx
                                 // 2xxx
     for(y = 0; y < 3; y++){     
