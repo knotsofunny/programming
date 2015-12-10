@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int sum(int x, int y, int array[15][15]);
+int sum(int i, int array[15][15]);
 
 int main(){
 
@@ -20,39 +20,21 @@ int main(){
                      {63, 66,  4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31,  0},
                      { 4, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23}};
 
-    for(int y = 2; y < 15; y++){
-        for(int x = 1; x < y; x++){
-            if(array[y][x] < array[y][x + 1] && array[y][x] < array[y][x - 1]){
-                array[y][x] = 0;
-            }
-        }
-    }
 
-    printf("%d\n", sum(0,0,array));
+    printf("%d\n", sum(15, array));
 
     return 0;
 }
 
-int sum(int x, int y, int array[15][15]){
-//    printf("%d\n", array[y][x]);
-    if(array[y][x] == 0){
-        return 0;
-    }
-
-    if(y == 14){
-        if(array[y][x] > array[y][x + 1]){
-            return array[y][x];
-        } else{
-            return array[y][x + 1];
+int sum(int i, int array[15][15]){
+    for(int y = i - 1; y > 0; y--){
+        for(int x = 0; x < i - 1; x ++){
+            if(array[y][x] < array[y][x+1]){
+                array[y-1][x] += array[y][x+1];
+            } else {
+                array[y-1][x] += array[y][x];
+            }
         }
     }
-    int left = array[y][x] + sum(x, y + 1, array);
-    int right = array[y][x] + sum(x + 1, y + 1, array);
-
-    if(left > right){
-        return left;
-    } else{
-        return right;
-    }
-
+    return array[0][0];
 }
