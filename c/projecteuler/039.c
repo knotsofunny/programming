@@ -9,8 +9,9 @@ int main(){
     int count = 0;
     double p, b, ans;
 
+
     for(p = 5; p <1000; p+=1){
-        for(b = 1; b < p ; b+=1){
+        for(b = 1; b < p/2 + 1; b+=1){
             double c = ((p * p * -1 ) / (2 * (b - p))) - b;
             if((int) c == c && c < p - b ){
                 int a = p - (c + b);
