@@ -3,8 +3,8 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(p004());
 
+        p049();
 	}
 
 	// Multiples of 3 and 5
@@ -94,7 +94,7 @@ public class Main {
 	}
 
 	public static long p010() {
-		int[] primeList = primeSeive(2000000);
+		int[] primeList = primeSeive(1, 2000000);
 
 		long answer = 0;
 
@@ -104,33 +104,48 @@ public class Main {
 
 		return answer;
 	}
+    public static long p049() {
 
-	public static int[] primeSeive(int limit) {
-		int[] numList = new int[limit + 1];
+   int[] primeList = primeSeive(1000, 10000);
+
+    return 0;
+    }
+
+    //Creates an array of all primes less than "max"
+	public static int[] primeSeive(int min, int max) {
+
+        //Create an array to store all numbers under the max
+		int[] numList = new int[max + 1];
+
 		int primeCount = 0;
 		int count = 0;
 		int[] primeList;
 
-		for (int i = 0; i <= limit; i += 1) {
+        //Fill the array with all numbers less than the max
+		for (int i = 0; i <= max; i += 1) {
 			numList[i] = i;
 		}
 
-		for (int i = 2; i < Math.sqrt(limit); i += 1) {
-			for (int j = i * 2; j < limit; j += i) {
+        //Starting at 2, begin removing all numbers that are a multiple of "i"
+		for (int i = 2; i < Math.sqrt(max); i += 1) {
+			for (int j = i * 2; j < max; j += i) {
 				numList[j] = 0;
 			}
 		}
 
-		for (int i = 2; i < limit; i += 1) {
-			if (numList[i] != 0) {
+        //Count the number of elements remaining in the array
+		for (int i = 2; i < max; i += 1) {
+			if (numList[i] != 0 && numList[i] > min) {
 				primeCount += 1;
 			}
 		}
 
+        //Create an array to store the prime numbers
 		primeList = new int[primeCount];
 
-		for (int i = 2; i < limit; i += 1) {
-			if (numList[i] != 0) {
+        //Fill the array of primes with every non zero element of the number array
+		for (int i = 2; i < max; i += 1) {
+			if (numList[i] != 0 && numList[i] > min) {
 				primeList[count] = numList[i];
 				count += 1;
 			}
@@ -138,5 +153,4 @@ public class Main {
 
 		return primeList;
 	}
-
 }
