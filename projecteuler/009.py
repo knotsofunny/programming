@@ -7,3 +7,4 @@ def p009():
                 return (a * b * int(c))
 
 print(p009())
+input()
