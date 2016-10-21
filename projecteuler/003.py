@@ -7,5 +7,3 @@ while i < num:
         i = 2
     i += 1
 print(int(num))
-
-input()

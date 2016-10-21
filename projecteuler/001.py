@@ -5,5 +5,3 @@ for i in range(1, 1000):
         answer += i
 
 print(answer)
-
-input()

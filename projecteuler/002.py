@@ -11,4 +11,3 @@ while b < 2000000:
         answer += a
     
 print(answer)
-input()

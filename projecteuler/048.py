@@ -8,4 +8,3 @@ for i in range(1, 1001):
         answer = answer % tenB
 
 print(answer)
-input()
